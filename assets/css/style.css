@@ -1,0 +1,228 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.main{
+    height: 100vh;
+    display: flex;
+    background-image: linear-gradient(90deg, rgba(208, 197, 242, 0.922), rgba(209, 199, 233, 0.895));
+}
+
+.book{
+    position: relative;
+    margin-top: 16%;
+    margin-left: 50%;
+    width: 260px;
+    height: 320px;
+    background-color: white;
+    cursor: pointer;
+    transform: perspective(2000px) translate(0, 0) rotate(-20deg) skew(15deg) scale(0.8);
+    box-shadow: -30px 30px 10px rgba(0, 0, 0, 0.502);
+    transition: 0.7s;
+}
+
+.book::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    top: 10px;
+    left: -20px;
+    transform: skewY(-45deg);
+    background-color: #91a7ff;
+}
+
+.book::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    left: -10px;
+    bottom: -20px;
+    transform: skewX(-45deg);
+    background-color: #91a7ff;
+}
+
+.book-cover{
+    position: absolute;
+    width: 260px;
+    height: 320px;
+    background-color: #748ffc;
+    cursor: pointer;
+    transition: .7s;
+    z-index: 99999;
+}
+
+.book.book-over {
+    transition: .7s;
+    transform: perspective(2000px) translate(25%, -25%) skew(5deg);
+}
+
+.book-cover h1{
+    text-align: center;
+    font-size: 2.8rem;
+    transform: translateY(120px);
+}
+
+.book-page-1 {
+    position: absolute;
+    width: 260px;
+    height: 320px;
+    background-color: #e8eaee;
+    transition: .7s;
+}
+
+.book-page-1 p{
+    font-size: 1rem;
+    padding: 0 6px;
+    text-align: center;
+    transform: translateY(120px);
+}
+
+.to-page{
+    animation: toPage linear .8s forwards;
+}
+
+@keyframes toPage {
+    20%{
+        transform: perspective(2000px) translate(-2.7%, -6%) rotateY(-20deg) skewY(-8deg) scale(1.03);
+    }
+    30%{
+        transform: perspective(2000px) translate(-12.7%, -12%) rotateY(-40deg) skewY(-16deg) scale(1.035);
+    }
+    40%{
+        transform: perspective(2000px) translate(-27%, -12%) rotateY(-60deg) skewY(-16deg) scale(1.05);
+    }
+    50%{
+        transform: perspective(2000px) translate(-44.5%, -11%) rotateY(-80deg) skewY(-16deg) scale(1.06);
+    }
+    60%{
+        transform: perspective(2000px) translate(-63%, -11%) rotateY(-100deg) skewY(-14deg) scale(1.07);
+        opacity: 0.9;
+    }
+    70%{
+        transform: perspective(2000px) translate(-79.5%, -9.5%) rotateY(-120deg) skewY(-12deg) scale(1.06);
+        opacity: 0.8;
+    }
+    80%{
+        transform: perspective(2000px) translate(-92%, -6%) rotateY(-140deg) skewY(-8deg) scale(1.04);
+        opacity: 0.7;
+    }
+    90%{
+        transform: perspective(2000px) translate(-100%, -3%) rotateY(-160deg) skewY(-4deg) scale(1.03);
+        opacity: 0.6;
+    }
+    100%{
+        transform: perspective(2000px) translate(-100%, 0%) rotateY(-180deg) skewY(0deg) scale(1);
+        opacity: 0.5;
+        box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.502);
+    }
+}
+
+.from-page{
+    animation: fromPage linear .8s forwards;
+}
+
+@keyframes fromPage {
+    0%{
+        transform: perspective(2000px) translate(-100%, 0%) rotateY(-180deg) skewY(0deg) scale(1);
+        opacity: 0.5;
+        box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.502);
+    }
+    20%{
+        transform: perspective(2000px) translate(-100%, -3%) rotateY(-160deg) skewY(-4deg) scale(1.03);
+        opacity: 0.6;
+    }
+    30%{
+        transform: perspective(2000px) translate(-92%, -6%) rotateY(-140deg) skewY(-8deg) scale(1.04);
+        opacity: 0.7;
+    }
+    40%{
+        transform: perspective(2000px) translate(-79.5%, -9.5%) rotateY(-120deg) skewY(-12deg) scale(1.06);
+        opacity: 0.8;
+    }
+    50%{
+        transform: perspective(2000px) translate(-63%, -11%) rotateY(-100deg) skewY(-14deg) scale(1.07);
+        opacity: 0.9;
+    }
+    60%{
+        transform: perspective(2000px) translate(-44.5%, -11%) rotateY(-80deg) skewY(-16deg) scale(1.06);
+    }
+    70%{
+        transform: perspective(2000px) translate(-27%, -12%) rotateY(-60deg) skewY(-16deg) scale(1.05);
+    }
+    80%{
+        transform: perspective(2000px) translate(-12.7%, -12%) rotateY(-40deg) skewY(-16deg) scale(1.035);
+    }
+    90%{
+        transform: perspective(2000px) translate(-2.7%, -6%) rotateY(-20deg) skewY(-8deg) scale(1.03);
+    }
+    100%{
+        transform: perspective(2000px) translate(0%, 0%) rotateY(0deg) skewY(0deg) scale(1);
+    }
+}
+
+.book-modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.226);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.book-modal.active{
+    display: flex;
+}
+
+.book-modal--container{
+    position: absolute;
+    width: 400px;
+    text-align: center;
+    padding: 10px 20px;
+    color: white;
+    background: radial-gradient( circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100% );
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    border-radius: 10px;
+    margin-left: 10%;
+    animation: upToDown ease .5s;
+}
+
+@keyframes upToDown {
+    from{
+        opacity: 0;
+        transform: translateY(-500%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes downToUp {
+    from{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-500%);
+    }
+}
